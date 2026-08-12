@@ -1,0 +1,11 @@
+{
+  "data": "E:\\baitap\\Nam3\\PTDLKD\\home-credit-default-risk\\application_train.csv",
+  "output_dir": "E:\\baitap\\Project1\\IS403.Q13\\artifacts\\portfolio_sample_50000",
+  "models": [
+    "logistic_regression",
+    "random_forest",
+    "xgboost"
+  ],
+  "sample_size": 50000,
+  "random_state": 42
+}

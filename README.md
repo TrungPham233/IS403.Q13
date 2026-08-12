@@ -70,7 +70,8 @@ XGBoost provided the strongest balance between identifying risky borrowers and l
 ├── src/                     # Reusable preprocessing/training code
 ├── models/                  # Serialized models (ignored by Git)
 ├── reports/
-│   └── figures/             # Exported charts and SHAP plots
+│   ├── figures/             # Exported charts and SHAP plots
+│   └── README.md            # Reproducible figure workflow
 ├── docs/
 │   └── PROJECT_STATUS.md    # Reproducibility roadmap
 ├── IS403_Q13.pdf            # Original Vietnamese course report
@@ -99,6 +100,16 @@ python -m src.train --data data/raw/application_train.csv
 ```
 
 The command writes model files and `model_metrics.csv` to `artifacts/`, which is ignored by Git. Use the code under `src/` as the clean, local replacement for the original Colab/Google Drive-dependent experiment files.
+
+After training, create a chart for the portfolio:
+
+```bash
+python -m src.report --metrics artifacts/model_metrics.csv
+```
+
+The repository includes a documented 50,000-row reproducibility run in `reports/`; it is a development-scale run, not a replacement for the full experiment results in the course report.
+
+![Model comparison from the documented 50,000-row run](reports/figures/model_comparison.svg)
 
 ## Limitations and responsible use
 
