@@ -1,0 +1,36 @@
+# Python
+__pycache__/
+*.py[cod]
+.Python
+.venv/
+venv/
+.env
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Data and trained artifacts
+data/raw/
+data/processed/
+models/
+*.joblib
+*.pkl
+
+!data/
+!data/raw/
+!data/raw/.gitkeep
+!data/processed/
+!data/processed/.gitkeep
+!models/
+!models/.gitkeep
+
+# Tooling
+.pytest_cache/
+.coverage
+htmlcov/
+.vscode/
+.idea/
+
+# OS files
+.DS_Store
+Thumbs.db
