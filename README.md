@@ -41,7 +41,7 @@ flowchart LR
     H --> I
 ```
 
-The study evaluated Logistic Regression, Decision Tree, SVM, KNN, Random Forest, LightGBM, CatBoost, XGBoost, MLP, and Naive Bayes. Hyperparameters were tuned with Grid Search. Class-weighting strategies were used rather than synthetic oversampling.
+The original study evaluated Logistic Regression, Decision Tree, SVM, KNN, Random Forest, LightGBM, CatBoost, XGBoost, MLP, and Naive Bayes. The original notebooks used class weighting for the tree-based models and under-sampling for KNN; they did **not** use SMOTE. This repository's reproducible pipeline starts with Logistic Regression, Random Forest, and XGBoost, then can be extended with the remaining models.
 
 ## Results from the project report
 
@@ -57,7 +57,7 @@ XGBoost provided the strongest balance between identifying risky borrowers and l
 - Larger loan and goods-price amounts (`AMT_CREDIT`, `AMT_GOODS_PRICE`) contributed meaningfully to model risk estimates.
 - SHAP made it possible to explain why an individual application was flagged, supporting a more transparent credit-review process.
 
-> Metrics above reproduce the values reported in the course report. A reproducible training pipeline is tracked as the next repository milestone; see [Project status](docs/PROJECT_STATUS.md).
+> Metrics above reproduce the values reported in the course report. Re-running the pipeline may produce different scores because package versions, feature preprocessing, split definitions, and hyperparameters affect model results.
 
 ## Repository structure
 
@@ -78,7 +78,7 @@ XGBoost provided the strongest balance between identifying risky borrowers and l
 └── README.md
 ```
 
-## Quick start (after the code notebooks are restored)
+## Quick start
 
 ```bash
 git clone https://github.com/TrungPham233/IS403.Q13.git
@@ -90,10 +90,15 @@ pip install -r requirements.txt
 
 Download the Home Credit data from Kaggle, then place `application_train.csv` in `data/raw/`. The planned run order is:
 
-1. `notebooks/01_eda.ipynb`
-2. `notebooks/02_feature_engineering.ipynb`
-3. `notebooks/03_model_comparison.ipynb`
-4. `notebooks/04_shap_explainability.ipynb`
+```bash
+# Start with a smaller sample to confirm that the environment works.
+python -m src.train --data data/raw/application_train.csv --sample-size 50000
+
+# Train on the full dataset. This can take substantial time and memory.
+python -m src.train --data data/raw/application_train.csv
+```
+
+The command writes model files and `model_metrics.csv` to `artifacts/`, which is ignored by Git. Use the code under `src/` as the clean, local replacement for the original Colab/Google Drive-dependent experiment files.
 
 ## Limitations and responsible use
 
@@ -113,4 +118,3 @@ Download the Home Credit data from Kaggle, then place `application_train.csv` in
 
 - [Original project report (Vietnamese)](IS403_Q13.pdf)
 - [Repository status and contribution roadmap](docs/PROJECT_STATUS.md)
-

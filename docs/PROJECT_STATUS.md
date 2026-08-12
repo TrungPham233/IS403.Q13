@@ -2,15 +2,15 @@
 
 ## Current state
 
-This repository preserves the original course report and has been reorganized to document the problem, data source, reported metrics, and intended end-to-end workflow.
+This repository preserves the original course report and includes a clean local training pipeline for the Home Credit `application_train.csv` dataset. It is organized to document the problem, data source, reported metrics, and end-to-end workflow.
 
-The original experiment notebooks, source code, trained models, and derived datasets are not currently available in the repository. Therefore, the figures and metrics in the report should be treated as **reported experimental results**, not yet as one-command reproducible outputs.
+The original experiment notebooks used Google Colab and a Google Drive preprocessed-data file, so they are not copied directly into the repository. The local code in `src/` removes those personal-path dependencies. The figures and metrics in the report should still be treated as **reported experimental results** until this cleaned pipeline has been run with a pinned environment and its output figures are committed.
 
 ## What to add next
 
 ### 1. Restore the original work
 
-Collect any existing files from team members before rebuilding:
+Keep the following original files safely outside the Git repository as references:
 
 - Jupyter notebooks (`.ipynb`)
 - Python scripts (`.py`)
@@ -19,7 +19,7 @@ Collect any existing files from team members before rebuilding:
 - SHAP charts and confusion matrices
 - A `requirements.txt` or environment file used at the time
 
-Commit notebooks after clearing outputs that include personal paths or credentials. Never upload Kaggle API tokens, raw customer-like data, or large trained-model files without deciding on a release method.
+If any legacy notebook is added later, clear outputs that include personal paths or credentials. Never upload Kaggle API tokens, raw data, or large trained-model files.
 
 ### 2. Make the experiment reproducible
 
